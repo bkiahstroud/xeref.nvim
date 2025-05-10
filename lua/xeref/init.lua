@@ -10,7 +10,7 @@ function M.copy_method_ref()
 	local bufnr = vim.api.nvim_get_current_buf()
 
 	if parsers.get_buf_lang() ~= "ruby" then
-		print("xeref currently only supports Ruby")
+		vim.notify("xeref currently only supports Ruby", vim.log.levels.ERROR)
 		return
 	end
 
@@ -18,7 +18,7 @@ function M.copy_method_ref()
 	local node = ts_utils.get_node_at_cursor()
 
 	if not node then
-		print("No Treesitter node found at cursor")
+		vim.notify("No Treesitter node found at cursor", vim.log.levels.WARN)
 		return
 	end
 
@@ -54,7 +54,7 @@ function M.copy_method_ref()
 	end
 
 	if not method_name then
-		print("Cursor is not inside a method")
+		vim.notify("Cursor is not inside a method", vim.log.levels.WARN)
 		return
 	end
 
@@ -64,7 +64,7 @@ function M.copy_method_ref()
 	-- Copy the method ref to register synced with system clipboard
 	vim.fn.setreg("+", method_ref)
 
-	print("Copied " .. method_ref)
+	vim.notify("Copied " .. method_ref)
 end
 
 return M
