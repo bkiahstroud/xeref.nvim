@@ -2,6 +2,8 @@
 
 A Neovim plugin for copying the reference to a method that the cursor is within.
 
+https://github.com/user-attachments/assets/640b8563-09d0-4e97-a459-20cb9f73dd54
+
 ## Supported Languages
 
 > [!NOTE]
